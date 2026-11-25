@@ -1,0 +1,287 @@
+/* ===== 색과 글꼴: 바꾸고 싶으면 여기만 고치세요 ===== */
+:root {
+  --color-bg: #F6E3E6;     /* 배경: 연한 딸기우유 */
+  --color-text: #2B2D42;   /* 글자: 잉크 남색 */
+  --color-point: #2456C4;  /* 포인트: 빨대 파랑 */
+
+  --font-title: "Gaegu", sans-serif;
+  --font-body: "Poor Story", sans-serif;
+}
+
+
+/* ===== 전체 기본 ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 22px;
+  line-height: 1.7;
+  word-break: keep-all;       /* 한글 단어 중간에서 줄이 바뀌지 않게 */
+  overflow-wrap: break-word;  /* 긴 이메일은 넘치지 않게 */
+}
+
+h1, h2, h3, .logo, .price, th {
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(50px, 5vw, 68px);  /* 화면 너비에 따라 50~68px */
+  letter-spacing: -2px;
+}
+
+h2 {
+  font-size: 48px;
+  letter-spacing: -1px;
+}
+
+h3 {
+  font-size: 34px;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;  /* 사진이 찌그러지지 않게 */
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--color-point);
+  outline-offset: 6px;
+}
+
+/* 다섯 구역의 공통 너비 */
+.header, .hero, .menu, .about, .footer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+
+/* ===== 1. Header ===== */
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px 32px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.logo {
+  font-size: 38px;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.nav a {
+  padding: 6px 0;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--color-point);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+
+/* ===== 2. 첫 화면 ===== */
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 3fr;  /* 글 2 : 사진 3 */
+  align-items: center;
+  gap: 48px;
+  padding-top: 16px;
+  padding-bottom: 120px;
+}
+
+.hero-small {
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  margin-bottom: 24px;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 28px;
+  color: var(--color-point);
+  font-size: 26px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+
+.text-link:hover {
+  text-decoration-style: wavy;  /* 마우스를 올리면 밑줄이 물결로 */
+}
+
+.hero-photo {
+  height: 620px;
+}
+
+
+/* ===== 3. 메뉴 ===== */
+.menu {
+  padding-bottom: 120px;
+}
+
+.menu h2 {
+  margin-bottom: 24px;
+}
+
+.menu-list {
+  list-style: none;
+  border-top: 1px solid var(--color-text);
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;  /* 사진 | 이름과 설명 | 가격 */
+  align-items: center;
+  gap: 32px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-text);
+}
+
+.menu-item img {
+  height: 120px;
+  object-position: 50% 33%;  /* 에이드 빨대가 잘리지 않게 */
+}
+
+.price {
+  font-size: 34px;
+  white-space: nowrap;  /* 숫자와 "원"이 떨어지지 않게 */
+}
+
+
+/* ===== 4. 소개 · 오시는 길 ===== */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 56px;
+  padding-bottom: 120px;
+}
+
+.about-photo {
+  height: 640px;
+  object-position: right;  /* 테이블이 있는 오른쪽이 보이게 */
+}
+
+.about h2 {
+  margin-bottom: 16px;
+}
+
+.about-text p {
+  margin-bottom: 48px;
+}
+
+.info {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info th, .info td {
+  padding: 12px 0;
+  border-top: 1px solid var(--color-text);
+  text-align: left;
+  vertical-align: top;
+}
+
+.info th {
+  width: 120px;
+  font-size: 26px;
+}
+
+
+/* ===== 5. Footer ===== */
+.footer {
+  padding-bottom: 40px;
+}
+
+.footer p {
+  padding-top: 24px;
+  border-top: 1px solid var(--color-text);
+}
+
+
+/* ===== 태블릿과 휴대폰 (너비 960px 이하) ===== */
+@media (max-width: 960px) {
+  .header, .hero, .menu, .about, .footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* 글과 사진을 위아래로 */
+  .hero, .about {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .hero, .menu, .about {
+    padding-bottom: 80px;
+  }
+
+  .hero-photo, .about-photo {
+    height: 400px;
+  }
+}
+
+
+/* ===== 휴대폰 (너비 600px 이하) ===== */
+@media (max-width: 600px) {
+  body {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 46px;
+  }
+
+  h2 {
+    font-size: 42px;
+  }
+
+  h3, .price {
+    font-size: 26px;
+    letter-spacing: -1px;
+  }
+
+  .hero-photo, .about-photo {
+    height: 300px;
+  }
+
+  .menu-item {
+    grid-template-columns: 76px 1fr auto;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .menu-item img {
+    height: 76px;
+  }
+
+  .info th {
+    width: 96px;
+    font-size: 24px;
+  }
+}
